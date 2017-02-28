@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Tool</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jBox/0.3.2/jBox.min.css">
+		<link rel="stylesheet" href="styles/main.css">
+		<link href='//fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+		<script data-main="scripts/main" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
+	</head>
+	<body>
+
+		<% if (message.length > 0) { %>
+			<!-- show any messages that come back with authentication -->
+			<div class="alert alert-info"><%= message %></div>
+		<% } %>
+
+		<% if (user) { 
+			var permissions = JSON.stringify(user.permissions);
+		} else {
+			permissions = JSON.stringify([]);
+		} %>
+		<script type="text/javascript">
+			// chill h4xx0rs, authorization is handled serverside
+			var userPermissions = <%- permissions %>;
+		</script>
+
+		<div id="header">
+			<a href="#">
+				<h1>Newsletter tool</h1>
+				<h4 class="versionName"></h4>
+			</a>
+		</div>
+		<!-- the main app container -->
+		<div id="content">
+		</div>
+
+		<div id="abort">
+			<div class="sign"></div>
+			<div class="failure"></div>
+		</div>
+	</body>
+</html>

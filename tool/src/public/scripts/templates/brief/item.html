@@ -1,0 +1,13 @@
+<li class="box col-xs-12" data-cid="<%= cid %>">
+
+	<% if ((hasPermission("canEditWeekly") && briefType == "weekly") ||
+		(hasPermission("canEditRetail") && briefType == "retail") ||
+		(hasPermission("canEditTrigger") && briefType == "trigger")) { %>
+		<button type="button" class="add-box btn btn-default btn-xs remove">
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+		</button>
+	<% } %>
+
+_CONTENT_
+
+</li>

@@ -1,0 +1,329 @@
+%%[
+
+SET @customerCountry = Country
+
+_AMP-SCRIPT-FROM-TOOL_
+
+IF @customerCountry == "DE" THEN
+	SET @problemsViewing = "E-Mail nicht lesbar? <u>Bitte hier anklicken</u>"
+	SET @followUs = "FOLGE UNS:"
+	SET @availabilityNotice = "Wir k&ouml;nnen nicht garantieren, dass alle der gezeigten Produkte in dieser E-Mail in jedem JACK &amp; JONES Store erh&auml;ltlich sind. Die Preise variieren eventuell von Store zu Store. Alle Preise sind unverbindliche empfohlene Einzelhandelspreise."
+	SET @unsubscribeBeforeLink = "Falls Du nicht länger Emails von JACK &amp; JONES erhalten möchtest, kannst Du Dich "
+	SET @unsubscribeLink = "hier abmelden"
+	SET @unsubscribeAfterLink = "."
+	SET @updateBeforeLink = "Aktualisiere dein Profil "
+	SET @updateLink = "hier"
+	SET @updateAfterLink = "."
+	SET @changeEmailSupplier = "Da wir den E-Mail-Anbieter gewechselt haben, funktionieren die Links aus E-Mails, die vor diesem Datum verschickt wurden, nicht mehr. Wenn du dich aus unserer E-Mail-Liste austragen möchtest, nutze bitte den Abmeldelink aus unseren E-Mails, die nach dem 04-02-2016 versendet wurden."
+
+ELSEIF @customerCountry == "DK" THEN
+	SET @problemsViewing = "Hvis du ikke kan se mailen, s&aring; <u>klik her</u>"
+	SET @followUs = "F&Oslash;LG OS:"
+	SET @availabilityNotice = "Produkterne vist i denne mail kan variere fra butik til butik. Alle priser er vejledende udsalgspriser."
+	SET @unsubscribeBeforeLink = "&Oslash;nsker du ikke l&aelig;ngere at modtage e-mails fra JACK &amp; JONES, kan du "
+	SET @unsubscribeLink = "afmelde dig her"
+	SET @unsubscribeAfterLink = "."
+	SET @updateBeforeLink = "Opdater din profil "
+	SET @updateLink = "her"
+	SET @updateAfterLink = "."
+	SET @changeEmailSupplier = "Vi har fået en ny leverandør af e-mails. Derfor kan du ikke bruge afmeldingslinks fra før denne dato. Hvis du vil afmelde dig nyhedsbrevet, skal du bruge linket fra e-mails, som er sendt efter 04-02-2016."
+
+ELSEIF @customerCountry == "NL" THEN
+	SET @problemsViewing = "Indien deze e-mail niet goed leesbaar is, <u>klik dan hier</u>"
+	SET @followUs = "FOLLOW US:"
+	SET @availabilityNotice = "Let op: niet alle getoonde artikelen zijn verkrijgbaar in iedere JACK &amp; JONES winkel. Genoemde prijzen zijn adviesverkoopprijzen."
+	SET @unsubscribeBeforeLink = "Als je geen JACK &amp; JONES e-mails meer wilt ontvangen, "
+	SET @unsubscribeLink = "klik dan hier"
+	SET @unsubscribeAfterLink = "."
+	SET @updateBeforeLink = "Pas "
+	SET @updateLink = "hier"
+	SET @updateAfterLink = " je profiel aan."
+	SET @changeEmailSupplier = "Vanwege wisseling van e-mailprovider werken de afmeldlinks in de e-mails die vóór deze datum zijn verstuurd niet meer. Als je je wilt afmelden, dien je gebruik te maken van de afmeldlinks in de e-mails die zijn verzonden na 04-02-2016."
+
+ELSEIF @customerCountry == "NO" THEN
+	SET @problemsViewing = "Har du problemer med &aring; lese denne e-posten? <u>Klikk her</u>"
+	SET @followUs = "F&Oslash;LG OSS:"
+	SET @availabilityNotice = "Bemerk vennligst at vi ikke kan garantere at alle produktene som er vist i denne e-posten er tilgjengelig i alle JACK &amp; JONES butikkene og at prisene kan variere fra butikk til butikk. Alle priser er veiledende priser."
+	SET @unsubscribeBeforeLink = "Hvis du ikke lenger ønsker å motta e-post fra JACK &amp; JONES, "
+	SET @unsubscribeLink = "meld deg ut her"
+	SET @unsubscribeAfterLink = "."
+	SET @updateBeforeLink = "Oppdater din profil "
+	SET @updateLink = "her"
+	SET @updateAfterLink = "."
+	SET @changeEmailSupplier = "På grunn av endring i e-postleverandør er ikke lenker i e-poster datert før denne datoen gyldige. Dersom du ønsker å melde deg av listen, må du bruke avmeldingslenken fra e-poster sendt etter 04-02-2016."
+
+ELSEIF @customerCountry == "SE" THEN
+	SET @problemsViewing = "Problem med att visa det här mailet? <u>Klicka här</u>"
+	SET @followUs = "FÖLJ OSS:"
+	SET @availabilityNotice = "V&auml;nligen observera att vi inte l&auml;mnar n&aring;gra garantier f&ouml;r att produkterna som visas i detta mail &auml;r tillg&auml;ngliga i samtliga JACK &amp; JONES butiker. Observera att &auml;ven priserna kan variera d&aring; dessa endast &auml;r rekommenderade &aring;terf&ouml;rs&auml;ljarpriser."
+	SET @unsubscribeBeforeLink = "Om du inte längre önskar att mottaga e-mail från JACK &amp; JONES, "
+	SET @unsubscribeLink = "avregistrera dig här"
+	SET @unsubscribeAfterLink = "."
+	SET @updateBeforeLink = "Uppdatera din profil "
+	SET @updateLink = "här"
+	SET @updateAfterLink = "."
+	SET @changeEmailSupplier = "På grund av att vi har bytt e-postleverantör fungerar inte längre avregistreringslänkar i e-postmeddelanden innan detta datum. Om du vill avsluta din prenumeration ska du använda den länk för avregistrering som du hittar i alla e-postmeddelanden skickade efter 04-02-2016."
+
+ELSEIF @customerCountry == "FR" THEN
+	SET @problemsViewing = "Accédez à la version en ligne <u>ici</u>"
+	SET @followUs = "SUIVEZ-NOUS:"
+	SET @availabilityNotice = "Nous ne pouvons pas garantir que l'ensemble des produits pr&eacute;sent&eacute;s dans cet e-mail soient disponibles dans tous les magasins JACK &amp; JONES. Les prix peuvent aussi varier d'un magasin &agrave; l'autre. Tous les prix sont des prix retail recommand&eacute;s."
+	SET @unsubscribeBeforeLink = "Si vous ne souhaitez plus recevoir d'email de JACK &amp; JONES, "
+	SET @unsubscribeLink = "désabonnez-vous ici"
+	SET @unsubscribeAfterLink = "."
+	SET @updateBeforeLink = "Mettez à jour votre profil "
+	SET @updateLink = "ici"
+	SET @updateAfterLink = "."
+	SET @changeEmailSupplier = "En raison d'un changement de fournisseur de messagerie électronique, le lien de désinscription indiqué dans nos e-mails antérieurs à cette date ne fonctionne plus. Pour vous désinscrire, veuillez cliquer sur le lien de désinscription indiqué dans les e-mails qui vous ont été envoyés après le 04-02-2016."
+
+ELSEIF @customerCountry == "ES" THEN
+	SET @problemsViewing = "Si tienes problemas para visualizar este mail, haz <u>click aquí</u>"
+	SET @followUs = "SÍGUENOS:"
+	SET @availabilityNotice = "No podemos garantizar que todos los productos mostrados en este mail est&eacute;n disponibles en todas las tiendas JACK &amp; JONES, y los precios pueden sufrir variaciones de una tienda a otra. Todos los precios son recomendados."
+	SET @unsubscribeBeforeLink = "¿No quieres recibir e-mails de JACK &amp; JONES? Date de baja "
+	SET @unsubscribeLink = "aquí"
+	SET @unsubscribeAfterLink = "."
+	SET @updateBeforeLink = "Actualiza tus datos "
+	SET @updateLink = "aquí"
+	SET @updateAfterLink = "."
+	SET @changeEmailSupplier = "Como consecuencia del cambio de proveedor de servicios de correo, los enlaces para darse de baja contenidos en los mensajes enviados antes de esta fecha ya no funcionan. Si deseas darte de baja, puedes utilizar los enlaces que incluimos para tal fin en los correos electrónicos enviados a partir del 04-02-2016."
+
+ELSEIF @customerCountry == "FI" THEN
+	SET @problemsViewing = "Jos tämä viesti ei näy oikein, <u>klikkaa tästä</u>"
+	SET @followUs = "SEURAA MEITÄ:"
+	SET @availabilityNotice = "Huomioithan ettemme voi taata, ett&auml; kaikki t&auml;ss&auml; meiliss&auml; olevat tuotteet ovat saatavilla kaikissa JACK &amp; JONES liikkeiss&auml;. My&ouml;s hinnat voivat vaihdella liikkeitt&auml;in. Kaikki hinnat ovat ohjev&auml;hitt&auml;ishintoja."
+	SET @unsubscribeBeforeLink = "Jos et enää jatkossa halua sähköpostia meiltä, "
+	SET @unsubscribeLink = "voit peruuttaa sen täältä"
+	SET @unsubscribeAfterLink = "."
+	SET @updateBeforeLink = "Päivitä profiiliasi "
+	SET @updateLink = "tästä"
+	SET @updateAfterLink = "."
+	SET @changeEmailSupplier = "Sähköpostioperaattorimme on vaihtunut ja tästä syystä ennen kyseistä päivämäärää lähetettyjen sähköpostien linkit eivät enää toimi. Jos haluat perua tilauksesi, käytä 04-02-2016 jälkeen lähetetyissä sähköposteissa olevia perumislinkkejä."
+
+ELSE
+	SET @problemsViewing = "Problems viewing this mail? <u>Click here</u>"
+	SET @followUs = "FOLLOW US:"
+	SET @availabilityNotice = "Please note that we cannot secure that all products shown in this e-mail are available in all JACK &amp; JONES stores and that prices may vary from store to store. All prices are recommended retail prices."
+	SET @unsubscribeBeforeLink = "If you no longer want to receive emails from JACK &amp; JONES, "
+	SET @unsubscribeLink = "unsubscribe here"
+	SET @unsubscribeAfterLink = "."
+	SET @updateBeforeLink = "Update your profile "
+	SET @updateLink = "here"
+	SET @updateAfterLink = "."
+	SET @changeEmailSupplier = "Due to a change of e-mail supplier, unsubscribe links in e-mails dated prior to this date are no longer effective. If you wish to unsubscribe, you should use the unsubscribe links from e-mails that were sent after the 04-02-2016."
+
+ENDIF
+
+]%%
+<body bgcolor="#f7f7f7" style="margin: 0px; padding: 0px;">
+	<div itemscope itemtype="http://schema.org/EmailMessage">
+		<div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+			<meta itemprop="name" content="JACK&JONES" />
+			<link itemprop="url" href="http://www.jackjones.com" />
+			<link itemprop="url/googlePlus" href="https://plus.google.com/106986485849009393756" />
+		</div>
+	</div>
+	<table cellpadding="0" cellspacing="0" width="100%" border="0" bgcolor="#f7f7f7">
+		<tr>
+			<td align="center">
+				<table width="600" border="0" cellspacing="0" cellpadding="0" class="fullWidth">
+					<tr>
+						<td class="fullWidth" style="width:600px; max-width:600px; min-width:600px;" align="center">
+							<!-- preheader and online link -->
+							<table width="600" border="0" cellspacing="0" cellpadding="0" class="mobileHide">
+								<tbody>
+									<tr>
+										<td class="tableWrapper" style="width: 600px; max-width: 600px; min-width: 600px;" align="center">
+											<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+												<tbody>
+													<tr>
+														<td align="left" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height:14px; color: #8a8a8b; padding: 10px 10px 10px 0px; max-width: 300px;">%%__AdditionalEmailAttribute1%%</td>
+														<td class="online" align="right" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height:14px; color: #8a8a8b; padding: 10px 0px 10px 10px; vertical-align: top;"><a href="%%view_email_url%%" style="color: #8a8a8b; text-decoration: none;">%%=v(@problemsViewing)=%%</a></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- /preheader and online link -->
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<!-- logo -->
+							<table width="600" border="0" cellspacing="0" cellpadding="0" class="tableWrapper">
+								<tr>
+									<td class="tableWrapper" style="width:600px; max-width:600px; min-width:600px;" align="center">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+											<tr>
+												<td class="logo" align="center" style="padding:30px 0 40px 0;">
+													<a href="http://www.jackjones.com/"><img src="http://image.e.jackjones.com/lib/fe9d13727764027c75/m/1/JJ_logo.png" class="mobilelogo" width="192" alt="JACK &amp; JONES" border="0" style="display:block; margin:0 auto;"></a>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+							<!-- /logo -->
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<!-- brands -->
+							<table width="600" border="0" cellspacing="0" cellpadding="0" class="tableWrapper" align="center">
+								<tbody>
+									<tr>
+										<td class="tableWrapper" style="width: 600px; max-width: 600px; min-width: 600px;" align="center">
+											<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+												<tbody>
+													<tr>
+														<td class="navigation" style="padding-bottom: 30px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #000000;">
+															<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+																<tbody>
+																	<tr>
+																		<td align="left" width="55" style="padding-right:77px;">
+																			<a href="http://jackjones.com/search?cgid=jj-brands-core"><img src="http://image.e.jackjones.com/lib/fe9d13727764027c75/m/1/icon-Core.png" width="55" height="20" alt="" border="0" style="display: block; height:20px; width:55px;" /></a>
+																		</td>
+																		<td align="left" width="50" style="padding-right:86px;">
+																			<a href="http://jackjones.com/search?cgid=jj-brands-originals"><img src="http://image.e.jackjones.com/lib/fe9d13727764027c75/m/1/Originals.png" width="50" height="13" alt="" border="0" style="display: block; height:13px; width:50px;" /></a>
+																		</td>
+																		<td align="left" width="61" style="padding-right:84px;">
+																			<a href="http://jackjones.com/search?cgid=jj-brands-premium"><img src="http://image.e.jackjones.com/lib/fe9d13727764027c75/m/1/Premium.png" width="61" height="13" alt="" border="0" style="display: block; height:13px; width:61px;" /></a>
+																		</td>
+																		<td align="left">
+																			<a href="http://jackjones.com/search?cgid=jj-brands-vintage"><img src="http://image.e.jackjones.com/lib/fe9d13727764027c75/m/1/Vintage.png" width="51" height="13" alt="" border="0" style="display: block; height:13px; width:51px;" /></a>
+																		</td>
+																		<td align="right" width="60">
+																			<a href="http://jackjones.com/search?cgid=jj-brands-tech"><img src="http://image.e.jackjones.com/lib/fe9d13727764027c75/m/1/icon-Tech.png" width="60" height="13" alt="" border="0" style="display: block; height:13px; width:60px;" /></a>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- /brands -->
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							_CONTENT-GOES-HERE_
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<!-- customer service -->
+							<table width="600" border="0" cellspacing="0" cellpadding="0" class="tableWrapper">
+								<tbody>
+									<tr>
+										<td class="mobileHeight" height="40" style="width: 600px; max-width: 600px; min-width: 600px;" align="center"></td>
+									</tr>
+								</tbody>
+							</table>
+							<table width="600" border="0" cellspacing="0" cellpadding="0" class="tableWrapper" align="center">
+								<tbody>
+									<tr>
+										<td class="tableWrapper" style="width: 600px; max-width: 600px; min-width: 600px;" align="center">
+											<custom type="content" name="Service box">
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- /customer service -->
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<!-- social -->
+							<table width="600" border="0" cellspacing="0" cellpadding="0" class="tableWrapper">
+								<tbody>
+									<tr>
+										<td class="mobileHeight" height="30" style="width: 600px; max-width: 600px; min-width: 600px;" align="center"></td>
+									</tr>
+								</tbody>
+							</table>
+							<table width="600" border="0" cellspacing="0" cellpadding="0" class="tableWrapper" align="center">
+								<tbody>
+									<tr>
+										<td class="tableWrapper" style="width: 600px; max-width: 600px; min-width: 600px;" align="center">
+											<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+												<tbody>
+													<tr>
+														<td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 12px; color: #000000; font-weight: bold; padding-bottom: 14px;">%%=v(@followUs)=%%</td>
+													</tr>
+													<tr>
+														<td align="center" style="padding-bottom: 15px;">
+															<table border="0" cellspacing="0" cellpadding="0" align="center">
+																<tbody>
+																	<tr>
+																		<td style="padding-right: 12px;">
+																			<a href="https://www.facebook.com/JackandJones?utm_content=footer_facebook"><img src="http://image.e.jackjones.com/lib/fe9d13727764027c75/m/1/facebook-icon1.jpg" width="24" height="24" alt="" border="0" style="display: block;" /></a>
+																		</td>
+																		<td style="padding-right: 12px;">
+																			<a href="https://twitter.com/JackandJonesTM?utm_content=footer_twitter"><img src="http://image.e.jackjones.com/lib/fe9d13727764027c75/m/1/twitter-icon3.jpg" width="24" height="24" alt="" border="0" style="display: block;" /></a>
+																		</td>
+																		<td>
+																			<a href="https://instagram.com/jackandjones_official/?utm_content=footer_instagram"><img src="http://image.e.jackjones.com/lib/fe9d13727764027c75/m/1/instagram-icon1.jpg" width="24" height="24" alt="" border="0" style="display: block;" /></a>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- /social -->
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- Unsubscribe and copyright -->
+							<table width="600" border="0" cellspacing="0" cellpadding="0" class="tableWrapper" align="center">
+								<tbody>
+									<tr>
+										<td class="tableWrapper" style="width: 600px; max-width: 600px; min-width: 600px;" align="center">
+											<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+												<tbody>
+													<tr>
+														<td align="center">
+															<custom type="content" name="Disclaimer text">
+														</td>
+													</tr>
+													<tr>
+														<td align="center" class="footer" style="color: #505359; line-height: 20px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">%%=v(@availabilityNotice)=%%</td>
+													</tr>
+													<tr>
+														<td class="footer" align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 20px; color: #505359; padding-bottom: 25px;padding-left: 10px;padding-right: 10px;">%%=v(@unsubscribeBeforeLink)=%%<a href="http://app.member.jackjones.com/Unsubscribe/?email=%%emailaddr%%&code=%%ActivationCode%%&country=%%Country%%" style="color: #505359; text-decoration: underline !important;">%%=v(@unsubscribeLink)=%%</a>%%=v(@unsubscribeAfterLink)=%%
+															<br />%%=v(@updateBeforeLink)=%%<a href="https://member.bestseller.com/ProfileUpdate/?email=%%emailaddr%%&code=%%ActivationCode%%&country=%%Country%%&brand=JACK" style="color: #505359; text-decoration: underline !important;">%%=v(@updateLink)=%%</a>%%=v(@updateAfterLink)=%%
+															<br>%%=v(@changeEmailSupplier)=%%</td>
+													</tr>
+													<tr>
+														<td class="copyright" align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 20px; color: #767676; padding-bottom: 15px;">BESTSELLER A/S JACK & JONES, Fredskovvej, 7330 Brande, Denmark. </td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- /Unsubscribe and copyright -->
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<custom name="opencounter" type="tracking">
+</body>
+
+</html>

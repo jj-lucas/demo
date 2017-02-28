@@ -1,0 +1,75 @@
+<%
+fill = function(id) {
+	if (renderingMode == 'preview') {
+		// we want to preview the box content
+		if (!obj[id] || !obj[id][market])
+			return sanitizeString(obj.specs.placeholders[id])
+		else
+			return sanitizeString(obj[id][market])
+	} else {
+		// we are parsing the mail for deployment
+		// is this a link?
+		if (id.indexOf("link") != -1)
+			return '%%=RedirectTo(@' + cid + '_' + id + ')=%%'
+		else
+			return '%%=v(@' + cid + '_' + id + ')=%%'
+	}
+}
+%>
+
+
+<!-- 3-column image (responsive: 3-column) -->
+<table width="600" border="0" cellspacing="0" cellpadding="0" class="tableWrapper" bgcolor="#ffffff" align="center">
+	<tbody>
+		<tr>
+			<td class="tableWrapper" style="width: 600px; max-width: 600px; min-width: 600px;" align="center">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tbody>
+						<tr>
+							<td class="columnSmall" width="200" align="left" valign="top">
+								<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+									<tbody>
+										<tr>
+											<td class="header">
+												<a href="<%= fill('link1') %>">
+													<img src="<%= fill('img1') %>" width="200" alt="<%= fill('alt1') %>" border="0" style="display: block;" />
+												</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							<td class="columnSmall" width="200" align="left" valign="top">
+								<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+									<tbody>
+										<tr>
+											<td class="header">
+												<a href="<%= fill('link2') %>">
+													<img src="<%= fill('img2') %>" width="200" alt="<%= fill('alt2') %>" border="0" style="display: block;" />
+												</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							<td class="columnSmall" width="200" align="left" valign="top">
+								<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+									<tbody>
+										<tr>
+											<td class="header">
+												<a href="<%= fill('link3') %>">
+													<img src="<%= fill('img3') %>" width="200" alt="<%= fill('alt3') %>" border="0" style="display: block;" />
+												</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<!-- /3-column image (responsive: 3-column) -->

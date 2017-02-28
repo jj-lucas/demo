@@ -1,0 +1,28 @@
+<%
+fill = function(id) {
+	if (renderingMode == 'preview') {
+		// we want to preview the box content
+		if (!obj[id] || !obj[id][market])
+			return sanitizeString(obj.specs.placeholders[id])
+		else
+			return sanitizeString(obj[id][market])
+	} else {
+		// we are parsing the mail for deployment
+		// is this a link?
+		if (id.indexOf("link") != -1)
+			return '%%=RedirectTo(@' + cid + '_' + id + ')=%%'
+		else
+			return '%%=v(@' + cid + '_' + id + ')=%%'
+	}
+}
+%>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tbody>
+		<tr>
+			<td align="center" class="footer" style="color: #505359; line-height: 20px; padding-right: 10px; padding-bottom: 15px; padding-left: 10px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;"><%= fill('paragraph') %>
+			</td>
+		</tr>
+	</tbody>
+</table>

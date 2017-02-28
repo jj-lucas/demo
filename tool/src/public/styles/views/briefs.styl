@@ -1,0 +1,26 @@
+#briefs
+	margin 30px 0
+
+	th
+		padding-right 30px
+		
+	tr:odd
+		background #eee
+	
+	td
+		padding 2px
+	
+	.brief
+		display none
+	
+	&.weekly .brief[type=weekly]	
+	&.retail .brief[type=retail]	
+	&.trigger .brief[type=trigger]
+		display table-row
+		
+	& .brief.noresult
+		display none !important
+		
+#popup table
+	td
+		padding 10px

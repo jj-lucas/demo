@@ -1,0 +1,7 @@
+{
+  "name": "jj-newsletter-tool",
+  "version": "1.0.0",
+  "dependencies": {
+    "ag-grid-enterprise": "^6.0.1"
+  }
+}

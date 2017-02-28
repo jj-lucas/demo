@@ -1,0 +1,269 @@
+<%
+fill = function(id) {
+	if (renderingMode == 'preview') {
+		// we want to preview the box content
+		if (!obj[id] || !obj[id][market])
+			return sanitizeString(obj.specs.placeholders[id])
+		else
+			return sanitizeString(obj[id][market])
+	} else {
+		// we are parsing the mail for deployment
+		// is this a link?
+		if (id.indexOf("link") != -1)
+			return '%%=RedirectTo(@' + cid + '_' + id + ')=%%'
+		else
+			return '%%=v(@' + cid + '_' + id + ')=%%'
+	}
+}
+
+
+if (renderingMode == 'preview') {
+%>
+<!-- 1-column image -->
+<table width="600" border="0" cellspacing="0" cellpadding="0" class="tableWrapper" bgcolor="#fcfcfc" align="center">
+	<tbody>
+		<tr>
+			<td class="tableWrapper" style="width: 600px; max-width: 600px; min-width: 600px;" align="center">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tbody>
+						<tr>
+							<td class="header">
+								<img src="http://placehold.it/600x350?text=%%[ AMP SCRIPT - 3 products grid ]%%"/>
+            				</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<!-- /1-column image -->
+<% } else { %>
+
+<!-- 3-products -->
+<table width="600" border="0" cellspacing="0" cellpadding="0" class="tableWrapper" bgcolor="#ffffff" align="center">
+	<tbody>
+		<tr>
+			<td>
+%%[
+/* ============================================================================ */
+/* ============================================================================ */
+/* ============================================================================ */
+/* ============================================================================ */
+
+SET @SKU1	= '<%= fill('style1') %>'
+SET @SKU2	= '<%= fill('style2') %>'
+SET @SKU3	= '<%= fill('style3') %>'
+
+SET @CTA_NL = 'Shop nu'
+SET @CTA_DK = 'Shop nu'
+SET @CTA_SE = 'Köp nu'
+SET @CTA_NO = 'Kjøp nå'
+SET @CTA_ES = 'Compra ahora'
+SET @CTA_FR = 'Shoppez'
+SET @CTA_FI = 'Osta nyt'
+SET @CTA_DE = 'Jetzt shoppen'
+SET @CTA_ROE = 'Shop now'
+
+/* ============================================================================ */
+/* ============================================================================ */
+/* ============================================================================ */
+
+
+SET @FEED_DE = 'JJ_CoreFeed'
+SET @precountry = Country
+
+IF ( @precountry == 'NL' 
+	OR @precountry == 'DK' OR @precountry == 'DE' OR @precountry == 'SE' 
+	OR @precountry == 'NO' OR @precountry == 'CH') 
+THEN SET @country = @precountry
+ELSE SET @country = 'GB'
+ENDIF 
+
+
+IF @precountry     == 'NL' THEN SET @CTA = @CTA_NL
+ELSEIF @precountry == 'DK' THEN SET @CTA = @CTA_DK
+ELSEIF @precountry == 'SE' THEN SET @CTA = @CTA_SE
+ELSEIF @precountry == 'NO' THEN SET @CTA = @CTA_NO
+ELSEIF @precountry == 'ES' THEN SET @CTA = @CTA_ES
+ELSEIF @precountry == 'FR' THEN SET @CTA = @CTA_FR
+ELSEIF @precountry == 'FI' THEN SET @CTA = @CTA_FI
+ELSEIF (@precountry == 'DE' or @precountry == 'AT' or @precountry == 'CH')     THEN SET @CTA = @CTA_DE
+ELSE SET @CTA = @CTA_ROE
+ENDIF
+
+IF @precountry != 'GB' AND @country == 'GB' 
+THEN 
+
+SET @product1   = Concat(@SKU1,'_',@country)
+SET @product2   = Concat(@SKU2,'_',@country)
+SET @product3   = Concat(@SKU3,'_',@country)
+
+SET @URL1pre = Lookup(@FEED_DE, 'Producturl', 'SKU_Country', @product1)
+SET @URL1    = Replace(@URL1pre,"?forcecountry=GB", " ")
+SET @URL2pre = Lookup(@FEED_DE, 'Producturl', 'SKU_Country', @product2)
+SET @URL2    = Replace(@URL1pre,"?forcecountry=GB", " ")
+SET @URL3pre = Lookup(@FEED_DE, 'Producturl', 'SKU_Country', @product3)
+SET @URL3    = Replace(@URL1pre,"?forcecountry=GB", " ")
+
+SET @product1roe = Concat(@SKU1,'_','NL')
+SET @product2roe = Concat(@SKU2,'_','NL')
+SET @product3roe = Concat(@SKU3,'_','NL')
+
+SET @currency = Lookup(@FEED_DE, 'Currency', 'SKU_Country', @product1roe)
+SET @TITLE1   = Lookup(@FEED_DE, 'Title', 'SKU_Country', @product1roe)
+SET @TITLE2   = Lookup(@FEED_DE, 'Title', 'SKU_Country', @product2roe)
+SET @TITLE3   = Lookup(@FEED_DE, 'Title', 'SKU_Country', @product3roe)
+
+SET @IMG1     = Lookup(@FEED_DE, 'Imageurl', 'SKU_Country', @product1roe)
+SET @IMG2     = Lookup(@FEED_DE, 'Imageurl', 'SKU_Country', @product2roe)
+SET @IMG3     = Lookup(@FEED_DE, 'Imageurl', 'SKU_Country', @product3roe)
+
+SET @PRICE1   = Lookup(@FEED_DE, 'SalePrice', 'SKU_Country', @product1roe)
+SET @PRICE2   = Lookup(@FEED_DE, 'SalePrice', 'SKU_Country', @product2roe)
+SET @PRICE3   = Lookup(@FEED_DE, 'SalePrice', 'SKU_Country', @product3roe)
+
+ELSE
+
+SET @product1 = Concat(@SKU1,'_',@country)
+SET @product2 = Concat(@SKU2,'_',@country)
+SET @product3 = Concat(@SKU3,'_',@country)
+
+SET @currency = Lookup(@FEED_DE, 'Currency', 'SKU_Country', @product1)
+SET @IMG1     = Lookup(@FEED_DE, 'Imageurl', 'SKU_Country', @product1)
+SET @IMG2     = Lookup(@FEED_DE, 'Imageurl', 'SKU_Country', @product2)
+SET @IMG3     = Lookup(@FEED_DE, 'Imageurl', 'SKU_Country', @product3)
+
+SET @URL1 = Lookup(@FEED_DE, 'Producturl', 'SKU_Country', @product1)
+SET @URL2 = Lookup(@FEED_DE, 'Producturl', 'SKU_Country', @product2)
+SET @URL3 = Lookup(@FEED_DE, 'Producturl', 'SKU_Country', @product3)
+
+SET @PRICE1 = Lookup(@FEED_DE, 'SalePrice', 'SKU_Country', @product1)
+SET @PRICE2 = Lookup(@FEED_DE, 'SalePrice', 'SKU_Country', @product2)
+SET @PRICE3 = Lookup(@FEED_DE, 'SalePrice', 'SKU_Country', @product3)
+
+SET @TITLE1 = Lookup(@FEED_DE, 'Title', 'SKU_Country', @product1)                       
+SET @TITLE2 = Lookup(@FEED_DE, 'Title', 'SKU_Country', @product2)
+SET @TITLE3 = Lookup(@FEED_DE, 'Title', 'SKU_Country', @product3)
+
+ENDIF
+
+IF @currency        == 'GBP' THEN
+SET @currencySymbol = '&pound;'
+SET @PRICESETUP1    = concat(@currencySymbol, ' ', @PRICE1)
+SET @PRICESETUP2    = concat(@currencySymbol, ' ', @PRICE2)
+SET @PRICESETUP3    = concat(@currencySymbol, ' ', @PRICE3)
+
+ELSEIF @currency    == 'EUR' THEN
+SET @currencySymbol = '&euro;'
+SET @PRICE1         = replace(@PRICE1,".",",")
+SET @PRICE2         = replace(@PRICE2,".",",")
+SET @PRICE3         = replace(@PRICE3,".",",")
+
+SET @PRICESETUP1 = concat(@currencySymbol, ' ', @PRICE1)
+SET @PRICESETUP2 = concat(@currencySymbol, ' ', @PRICE2)
+SET @PRICESETUP3 = concat(@currencySymbol, ' ', @PRICE3)
+
+ELSE SET @currencySymbol = @currency
+SET @PRICE1              = replace(@PRICE1,".",",")
+SET @PRICE2              = replace(@PRICE2,".",",")
+SET @PRICE3              = replace(@PRICE3,".",",")
+
+SET @PRICESETUP1 = concat(@PRICE1, ' ', @currencySymbol)
+SET @PRICESETUP2 = concat(@PRICE2, ' ', @currencySymbol)
+SET @PRICESETUP3 = concat(@PRICE3, ' ', @currencySymbol)
+
+ENDIF
+
+]%%
+			</td>
+		</tr>
+	</tbody>
+</table>	
+
+<table width="600" border="0" cellspacing="0" cellpadding="0" class="tableWrapper" bgcolor="#ffffff" align="center">
+	<tbody>
+		<tr>
+			<td class="tableWrapper" style="width: 600px; max-width: 600px; min-width: 600px;" align="center"><br>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+					<tbody>
+						<tr>
+							<td class="columnSmall" width="200" align="left" valign="top">
+								<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+									<tbody>
+										<tr>
+											<td class="header">
+												<a href="%%=RedirectTo(@URL1)=%%"><img src="%%=v(@IMG1)=%%" width="200" height="240" alt="%%=v(@TITLE1)=%%" border="0" style="display: block;" /></a>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-align:center;">
+												<table cellpadding="0" cellspacing="0" border="0" align="center">
+													<tr>
+														<td style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 20px; color: #000000;text-align:center;">%%=v(@PRICESETUP1)=%%</td>
+													</tr>
+													<tr>
+														<td style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 20px; color: #000000;text-align:center;">
+															<a href="%%=RedirectTo(@URL1)=%%" style="text-decoration:underline;color: #000000;font-weight:bold;"><u>%%=v(@CTA)=%%</u></a><br><br></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							<td class="columnSmall" width="200" align="left" valign="top">
+								<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+									<tbody>
+										<tr>
+											<td class="header"><a href="%%=RedirectTo(@URL2)=%%"><img src="%%=v(@IMG2)=%%" width="200" height="240" alt="%%=v(@TITLE2)=%%" border="0" style="display: block;" /></a></td>
+										</tr>
+										<tr>
+											<td style="text-align:center;">
+												<table cellpadding="0" cellspacing="0" border="0" align="center">
+													<tr>
+														<td style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 20px; color: #000000;text-align:center;">%%=v(@PRICESETUP2)=%%</td>
+													</tr>
+													<tr>
+														<td style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 20px; color: #000000;text-align:center;">
+															<a href="%%=RedirectTo(@URL2)=%%" style="text-decoration:underline;color: #000000;font-weight:bold;"><u>%%=v(@CTA)=%%</u></a><br><br>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							<td class="columnSmall" width="200" align="left" valign="top">
+								<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+									<tbody>
+										<tr>
+											<td class="header"><a href="%%=RedirectTo(@URL3)=%%"><img src="%%=v(@IMG3)=%%" width="200" height="240" alt="%%=v(@TITLE3)=%%" border="0" style="display: block;" /></a></td>
+										</tr>
+										<tr>
+											<td style="text-align:center;">
+												<table cellpadding="0" cellspacing="0" border="0" align="center">
+													<tr>
+														<td style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 20px; color: #000000;text-align:center;">%%=v(@PRICESETUP3)=%%</td>
+													</tr>
+													<tr>
+														<td style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 20px; color: #000000;text-align:center;">
+															<a href="%%=RedirectTo(@URL3)=%%" style="text-decoration:underline;color: #000000;font-weight:bold;"><u>%%=v(@CTA)=%%</u></a><br><br>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<% } %>

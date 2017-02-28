@@ -1,0 +1,8 @@
+/src/app/scripts/auth.coffee
+/src/app/scripts/database.coffee
+/src/app/scripts/session.coffee
+node_modules
+/build
+/src/app/scripts/config.coffee
+/src/public/vendor
+/src/public/libs

@@ -1,0 +1,119 @@
+<h2><%= type %></h2>
+	
+<!-- images -->
+<% if (obj.specs.hasOwnProperty("image")) { %>
+	<h3>Images</h3>
+	<table>
+		<% for (var i=0, il = obj.specs.image.length; i < il; i++) { %>
+			<tr>
+				<td><strong><%= obj.specs.labels[obj.specs.image[i]] %></strong></td>
+				<td><input type="text" placeholder="fragment id" data-image="<%= obj.specs.image[i] %>"/>
+				<label>
+					<input class="gif" data-gif="<%= obj.specs.image[i] %>" type="checkbox" /> GIF
+				</label>
+				</td>
+			</tr>
+		<% } %>
+	</table>
+<% } %>
+
+<!-- copy -->
+<% if (obj.specs.hasOwnProperty("copy")) { %>
+	<h3>Copy</h3>
+	<div id="grid-copy" style="width: 100%;" class="grid ag-fresh"></div>
+
+	<!--
+	<% for (var c=0, cl = obj.specs.copy.length; c < cl; c++) { %>
+		<h3><%= obj.specs.labels[obj.specs.copy[c]] %></h3>
+		<table>
+			
+			<tr>
+				<% for (var m=0, ml = obj.markets.length; m < ml; m++) {
+					market = obj.markets[m] %>
+					<td><strong><%= market %></strong></td>
+				<% } %>
+			</tr>
+			<tr>
+				<% for (var m=0, ml = obj.markets.length; m < ml; m++) {
+					market = obj.markets[m] %>
+					<td>
+						<input class="small" placeholder="copy" type="text" data-copy="<%= obj.specs.copy[c] %>" data-market="<%= market %>"/>
+					</td>
+				<% } %>
+			</tr>
+		</table>
+	<% } %>
+	-->
+<% } %>
+
+<!-- links -->
+<% if (obj.specs.hasOwnProperty("link")) { %>
+	<h3>Links</h3>
+	<div id="grid-link" style="width: 100%;" class="grid ag-fresh"></div>
+
+	<!--
+	<% for (var c=0, cl = obj.specs.link.length; c < cl; c++) { %>
+		<h3><%= obj.specs.labels[obj.specs.link[c]] %></h3>
+		<table>
+			
+			<tr>
+				<% for (var m=0, ml = obj.markets.length; m < ml; m++) {
+					market = obj.markets[m] %>
+					<td><strong><%= market %></strong></td>
+				<% } %>
+			</tr>
+			<tr>
+				<% for (var m=0, ml = obj.markets.length; m < ml; m++) {
+					market = obj.markets[m] %>
+					<td>
+						<input class="small" placeholder="link" type="text" data-link="<%= obj.specs.link[c] %>" data-market="<%= market %>"/>
+					</td>
+				<% } %>
+			</tr>
+		</table>
+	<% } %>
+	-->
+<% } %>
+
+<!-- alt text -->
+<% if (obj.specs.hasOwnProperty("alttext")) { %>
+	<h3>Alternative text</h3>
+	<div id="grid-alttext" style="width: 100%;" class="grid ag-fresh"></div>
+	<!--
+	<% for (var c=0, cl = obj.specs.alttext.length; c < cl; c++) { %>
+		<h3><%= obj.specs.labels[obj.specs.alttext[c]] %></h3>
+		<table>
+			
+			<tr>
+				<% for (var m=0, ml = obj.markets.length; m < ml; m++) {
+					market = obj.markets[m] %>
+					<td><strong><%= market %></strong></td>
+				<% } %>
+			</tr>
+			<tr>
+				<% for (var m=0, ml = obj.markets.length; m < ml; m++) {
+					market = obj.markets[m] %>
+					<td>
+						<input class="small" placeholder="alttext" type="text" data-alttext="<%= obj.specs.alttext[c] %>" data-market="<%= market %>"/>
+					</td>
+				<% } %>
+			</tr>
+		</table>
+	<% } %>
+	-->
+<% } %>
+
+
+<!-- generic settings -->
+<% if (obj.specs.hasOwnProperty("generic")) { %>
+	<h3>Settings</h3>
+	<table>
+		<% for (var i=0, il = obj.specs.generic.length; i < il; i++) { %>
+			<tr>
+				<td><strong><%= obj.specs.labels[obj.specs.generic[i]] %></strong></td>
+				<td><input type="text" data-generic="<%= obj.specs.generic[i] %>"/>
+				</td>
+			</tr>
+		<% } %>
+	</table>
+<% } %>
